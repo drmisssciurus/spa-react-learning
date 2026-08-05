@@ -1,0 +1,30 @@
+.spells-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.spell-card {
+  border: 1px solid #e1b12c;
+  border-radius: 16px;
+  width: 280px;
+  text-align: center;
+  padding: 0 20px 20px 20px;
+  margin: 20px;
+}
+
+.spells-title {
+  font-family: "Cinzel", serif;
+  color: #e1b12c;
+  text-align: center;
+}
+
+.spell-name {
+  font-family: "Cinzel", serif;
+  color: #e1b12c;
+  text-align: center;
+}
+
+.spell-description {
+  color: grey;
+}

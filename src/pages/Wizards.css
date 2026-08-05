@@ -1,0 +1,11 @@
+.wizard-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.wizards-title {
+  font-family: "Cinzel", serif;
+  color: #e1b12c;
+  text-align: center;
+}

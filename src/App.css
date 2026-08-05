@@ -1,19 +1,1 @@
 
-.wizard-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.archive-title {
-  color: #e1b12c;
-  font-family: "Cinzel", serif;
-  text-align: center;
-  text-transform: uppercase;
-}
-
-.archive-description {
-  color: grey;
-  text-align: center;
-  font-size: 20px;
-}

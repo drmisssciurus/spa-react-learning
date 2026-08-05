@@ -1,0 +1,32 @@
+.archive-title {
+  color: #e1b12c;
+  font-family: "Cinzel", serif;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.archive-description {
+  color: grey;
+  text-align: center;
+  font-size: 20px;
+}
+
+.navigation {
+  text-align: center;
+}
+
+button {
+  border: 1px solid #e1b12c;
+  border-radius: 10px;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  color: rgb(175, 175, 175);
+  background-color: rgba(131, 130, 130, 0.541);
+  padding: 10px;
+  margin: 0 5px;
+}
+
+button:hover {
+  cursor: pointer;
+  transition: 0.5s;
+}
