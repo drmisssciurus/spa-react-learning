@@ -16,3 +16,8 @@ export type HPApiResponse = {
   patronus: string;
   image: string;
 };
+
+export type SpellInfo = {
+  name: string,
+  description: string
+}

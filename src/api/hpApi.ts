@@ -20,5 +20,7 @@ export async function getCharacterInfo(): Promise<CharacterInfo> {
   }
   const data = (await response.json()) as HPApiResponse;
 
+
   return toCharacterInfo(data);
 }
+

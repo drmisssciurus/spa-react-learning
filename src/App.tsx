@@ -7,12 +7,14 @@ import Characters from "./pages/Wizards";
 
 function App() {
   const [page, setPage] = useState<AppPage>("characters");
-
+  
+ 
   return (
     <AppLayout activepage={page} onPageChange={setPage}>
       {page === "characters" && <Characters />}
       {page === "spells" && <Spells />}
     </AppLayout>
+        
   );
 }
 
