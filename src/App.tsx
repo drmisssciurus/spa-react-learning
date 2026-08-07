@@ -1,23 +1,21 @@
-import WizardCard from "./components/WizardCard"
-import "./App.css"
+import "./App.css";
+import Spells from "./pages/Spells";
+import { useState } from "react";
+import type { AppPage } from "./types/types";
+import AppLayout from "./components/AppLayout";
+import Characters from "./pages/Wizards";
 
 function App() {
+  const [page, setPage] = useState<AppPage>("characters");
   
+ 
   return (
-    <>
-      <h1 className="archive-title">Ministry of Magic Archives</h1>
-      <p className="archive-description">Stores records on all wizards and witches</p>
-      
-      <div className="wizard-container">
-      
-       <WizardCard/>
-       <WizardCard/>
-       <WizardCard/>
-       <WizardCard/>
-     
-      </div>
-    </>
-  )
+    <AppLayout activepage={page} onPageChange={setPage}>
+      {page === "characters" && <Characters />}
+      {page === "spells" && <Spells />}
+    </AppLayout>
+        
+  );
 }
 
-export default App
+export default App;
