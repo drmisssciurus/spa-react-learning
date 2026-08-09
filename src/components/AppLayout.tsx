@@ -14,6 +14,7 @@ const navItems: Array<{ page: AppPage; label: string }> = [
 ];
 
 function AppLayout({ activepage, onPageChange, children }: AppLayoutProps) {
+  
   return (
     <div>
       <header>

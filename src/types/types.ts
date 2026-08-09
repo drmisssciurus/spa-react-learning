@@ -1,16 +1,10 @@
 export type AppPage = "characters" | "spells";
 
-export type CharacterInfo = {
+export type WizardInfo = {
+  id: string
   name: string;
-  house: string;
-  ancestry: string;
-  patronus: string;
-  image: string;
-};
-
-export type HPApiResponse = {
-  id: string;
-  name: string;
+  species: string;
+  eyeColour: string;
   house: string;
   ancestry: string;
   patronus: string;
@@ -18,6 +12,7 @@ export type HPApiResponse = {
 };
 
 export type SpellInfo = {
+  id: string,
   name: string,
   description: string
 }

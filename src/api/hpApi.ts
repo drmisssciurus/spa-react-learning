@@ -1,26 +1,27 @@
-import type { CharacterInfo, HPApiResponse } from "../types/types";
+import type { SpellInfo, WizardInfo } from "../types/types";
 
 const BASE_URL = "https://hp-api.onrender.com/api";
 
-function toCharacterInfo(data: HPApiResponse): CharacterInfo {
-  return {
-    name: data.name,
-    house: data.house,
-    ancestry: data.ancestry,
-    patronus: data.patronus,
-    image: data.image,
-  };
-}
-
-export async function getCharacterInfo(): Promise<CharacterInfo> {
+export async function getWizardsInfo(): Promise<WizardInfo[]> {
   const response = await fetch(`${BASE_URL}/characters`);
 
   if (!response.ok) {
-    throw new Error("Character request failed");
+    throw new Error("Characters request failed");
   }
-  const data = (await response.json()) as HPApiResponse;
 
+  const data = await response.json();
 
-  return toCharacterInfo(data);
+  return data;
 }
 
+export async function getSpellsInfo(): Promise<SpellInfo[]> {
+  const response = await fetch(`${BASE_URL}/spells`);
+
+  if (!response.ok) {
+    throw new Error("Spells request failed");
+  }
+
+  const data = await response.json();
+
+  return data;
+}

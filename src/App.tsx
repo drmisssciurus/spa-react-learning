@@ -3,7 +3,7 @@ import Spells from "./pages/Spells";
 import { useState } from "react";
 import type { AppPage } from "./types/types";
 import AppLayout from "./components/AppLayout";
-import Characters from "./pages/Wizards";
+import Wizards from "./pages/Wizards";
 
 function App() {
   const [page, setPage] = useState<AppPage>("characters");
@@ -11,7 +11,7 @@ function App() {
  
   return (
     <AppLayout activepage={page} onPageChange={setPage}>
-      {page === "characters" && <Characters />}
+      {page === "characters" && <Wizards />}
       {page === "spells" && <Spells />}
     </AppLayout>
         
