@@ -41,8 +41,7 @@ function Spells() {
         {spells.map((spell) => (
           <SpellCard
             key={spell.id}
-            name={spell.name}
-            description={spell.description}
+            spell={spell}
           />
         ))}
       </div>

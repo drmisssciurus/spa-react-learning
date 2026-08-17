@@ -1,30 +1,32 @@
+import type { WizardInfo } from "../../types/types";
 import "./WizardCard.css";
 
 type WizardCardProps = {
-  name: string,
-  house: string,
-  species: string,
-  eyeColour: string,
-  ancestry: string,
-  patronus: string,
-  image:string
+  wizard: WizardInfo,
+  onToggle: () => void,
+  isFavorite: boolean
 }
 
-function WizardCard({name, species, eyeColour, house, ancestry, patronus, image}: WizardCardProps) {
+function WizardCard({wizard, onToggle, isFavorite}: WizardCardProps) {
+
+
   return (
     <div className="wizard-card">
-      <h2 className="wizard-title">{name}</h2>
-      <p className="wizard-description">Species: {species}</p>
-      <p className="wizard-description">Eye colour: {eyeColour}</p>
-      <p className="wizard-description">House: {house}</p>
-      <p className="wizard-description">Blood status: {ancestry}</p>
-      <p className="wizard-description">Patronus: {patronus}</p>
+      <h2 className="wizard-title">{wizard.name}</h2>
       
-      <img
+      <p className="wizard-description">Species: {wizard.species}</p>
+      <p className="wizard-description">Eye colour: {wizard.eyeColour || "Unknown"}</p>
+      <p className="wizard-description">House: {wizard.house || "Unknown"}</p>
+      <p className="wizard-description">Blood status: {wizard.ancestry || "Unknown"}</p>
+      <p className="wizard-description">Patronus: {wizard.patronus || "Unknown"}</p>
+      
+      {wizard.image ? <img
         className="wizard-image"
-        src={image}
-        alt={name}
-      />
+        src={wizard.image}
+        alt={wizard.name}
+      /> : <img className="wizard-image" src="unknown.png" alt="unknown" />}
+      <button onClick={onToggle} type="button" className="saved">
+        {isFavorite? "❤️": "❤"}</button>
     </div>
   );
 }
