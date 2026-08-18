@@ -4,7 +4,12 @@ import "./Spells.css";
 import type { SpellInfo } from "../types/types";
 import { getSpellsInfo } from "../api/hpApi";
 
-function Spells() {
+type SpellsProps = {
+  favoriteSpells: SpellInfo[];
+  onToggle: (spell: SpellInfo) => void;
+};
+
+function Spells({ favoriteSpells, onToggle }: SpellsProps) {
   const [spells, setSpells] = useState<SpellInfo[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -38,12 +43,17 @@ function Spells() {
     <>
       <h1 className="spells-title">Spells</h1>
       <div className="spells-container">
-        {spells.map((spell) => (
-          <SpellCard
-            key={spell.id}
-            spell={spell}
-          />
-        ))}
+        {spells.map((spell) => {
+          const isSpellSaved = favoriteSpells.some((s) => s.id === spell.id);
+          return (
+            <SpellCard
+              key={spell.id}
+              spell={spell}
+              onToggle={() => onToggle(spell)}
+              isFavorite={isSpellSaved}
+            />
+          );
+        })}
       </div>
     </>
   );

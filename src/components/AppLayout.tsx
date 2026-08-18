@@ -1,10 +1,11 @@
 import type { ReactNode } from "react";
-import type { AppPage, WizardInfo } from "../types/types";
+import type { AppPage, SpellInfo, WizardInfo } from "../types/types";
 import SumFavorite from "../pages/forms/SumFavorite";
 import "./AppLayout.css";
 
 type AppLayoutProps = {
-  favorites: WizardInfo[];
+  favoriteWizards: WizardInfo[];
+  favoriteSpells: SpellInfo[];
   activepage: AppPage;
   onPageChange: (page: AppPage) => void;
   children: ReactNode;
@@ -15,7 +16,13 @@ const navItems: Array<{ page: AppPage; label: string }> = [
   { page: "spells", label: "Spells" },
 ];
 
-function AppLayout({ activepage, onPageChange, favorites, children }: AppLayoutProps) {
+function AppLayout({
+  activepage,
+  onPageChange,
+  favoriteWizards,
+  favoriteSpells,
+  children,
+}: AppLayoutProps) {
   return (
     <div>
       <header className="main-header">
@@ -38,8 +45,13 @@ function AppLayout({ activepage, onPageChange, favorites, children }: AppLayoutP
           ))}
         </nav>
         <div className="sum-box">
-        <SumFavorite favorites={favorites} onPageChange={() => onPageChange("favorites")}/>
-      </div>
+          <SumFavorite
+            favoriteWizards={favoriteWizards}
+            onPageChange={() => onPageChange("favoriteWizards")}
+            onPageSpellChange={() => onPageChange("favoriteSpells")}
+            favoriteSpells={favoriteSpells}
+          />
+        </div>
       </header>
 
       <main>{children}</main>

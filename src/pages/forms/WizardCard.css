@@ -36,7 +36,9 @@
 }
 
 .saved {
-  width: 50px;
+  width: 30px;
+  height: 30px;
+  padding: 0;
   position: absolute;
   bottom: 15px;
   right: 10px;
