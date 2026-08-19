@@ -9,3 +9,9 @@
   color: #e1b12c;
   text-align: center;
 }
+
+.error, .loading {
+  color: #e1b12c;
+  text-align: center;
+  margin-top: 50px;
+}
