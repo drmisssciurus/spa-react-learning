@@ -1,7 +1,11 @@
-export type AppPage = "characters" | "spells";
+export type AppPage =
+  | "characters"
+  | "spells"
+  | "favoriteWizards"
+  | "favoriteSpells";
 
 export type WizardInfo = {
-  id: string
+  id: string;
   name: string;
   species: string;
   eyeColour: string;
@@ -12,7 +16,7 @@ export type WizardInfo = {
 };
 
 export type SpellInfo = {
-  id: string,
-  name: string,
-  description: string
-}
+  id: string;
+  name: string;
+  description: string;
+};

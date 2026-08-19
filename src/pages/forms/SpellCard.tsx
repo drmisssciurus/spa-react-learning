@@ -1,16 +1,20 @@
-import "./SpellCard.css"
+import type { SpellInfo } from "../../types/types";
+import "./SpellCard.css";
 
 type SpellCardProps = {
-    name: string,
-    description: string
-}
+  spell: SpellInfo;
+  onToggle: () => void;
+  isFavorite: boolean;
+};
 
-
-function SpellCard({name, description}: SpellCardProps) {
+function SpellCard({ spell, onToggle, isFavorite }: SpellCardProps) {
   return (
     <div className="spell-card">
-      <h3 className="spell-name">{name}</h3>
-      <p className="spell-description">{description}</p>
+      <h3 className="spell-name">{spell.name}</h3>
+      <p className="spell-description">{spell.description}</p>
+      <button onClick={onToggle} type="button" className="saved-spell">
+        {isFavorite ? "❤️" : "❤"}
+      </button>
     </div>
   );
 }

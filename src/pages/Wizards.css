@@ -10,8 +10,18 @@
   text-align: center;
 }
 
-.error, .loading {
+.error,
+.loading {
   color: #e1b12c;
   text-align: center;
   margin-top: 50px;
+}
+
+.main-container {
+  display: flex;
+}
+
+.sum-box {
+  position: absolute;
+  right: 100px;
 }
