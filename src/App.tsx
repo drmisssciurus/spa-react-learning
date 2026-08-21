@@ -1,7 +1,7 @@
 import "./App.css";
 import Spells from "./pages/Spells";
 import { useEffect, useState } from "react";
-import { type AppPage, type WizardInfo, type SpellInfo } from "./types/types";
+import { type WizardInfo, type SpellInfo } from "./types/types";
 import AppLayout from "./components/AppLayout";
 import Wizards from "./pages/Wizards";
 import FavoriteWizards from "./pages/FavoriteWizards";
@@ -10,9 +10,11 @@ import {
   FAVORITE_SPELLS_STORAGE_KEY,
 } from "./storage/favoriteStorage";
 import FavoriteSpells from "./pages/FavoriteSpells";
+import { Route, Routes } from "react-router-dom";
+import NotFoundPage from "./pages/NotFoundPage";
+
 
 function App() {
-  const [page, setPage] = useState<AppPage>("characters");
   const [favoriteWizards, setFavoriteWizards] = useState<WizardInfo[]>(() => {
     const stored = localStorage.getItem(FAVORITE_WiZARDS_STORAGE_KEY);
     if (stored) {
@@ -73,37 +75,48 @@ function App() {
 
   return (
     <>
-      <AppLayout
-        activepage={page}
-        onPageChange={setPage}
-        favoriteWizards={favoriteWizards}
-        favoriteSpells={favoriteSpells}
-      >
-        {page === "characters" && (
-          <Wizards
-            favoriteWizards={favoriteWizards}
-            onToggle={handleToggleWizards}
+      <Routes>
+        <Route element={<AppLayout favoriteWizards={favoriteWizards} favoriteSpells={favoriteSpells}/>}>
+          <Route index element={<Wizards favoriteWizards={favoriteWizards} onToggle={handleToggleWizards}/>} />
+          <Route
+            path="wizards"
+            element={
+              <Wizards
+                favoriteWizards={favoriteWizards}
+                onToggle={handleToggleWizards}
+              />
+            }
           />
-        )}
-        {page === "spells" && (
-          <Spells
-            favoriteSpells={favoriteSpells}
-            onToggle={handleToggleSpells}
+          <Route
+            path="spells"
+            element={
+              <Spells
+                favoriteSpells={favoriteSpells}
+                onToggle={handleToggleSpells}
+              />
+            }
           />
-        )}
-        {page === "favoriteWizards" && (
-          <FavoriteWizards
-            favoriteWizards={favoriteWizards}
-            onToggle={handleToggleWizards}
+          <Route
+            path="favorite-wizards"
+            element={
+              <FavoriteWizards
+                favoriteWizards={favoriteWizards}
+                onToggle={handleToggleWizards}
+              />
+            }
           />
-        )}
-        {page === "favoriteSpells" && (
-          <FavoriteSpells
-            favoriteSpells={favoriteSpells}
-            onToggle={handleToggleSpells}
+          <Route
+            path="favorite-spells"
+            element={
+              <FavoriteSpells
+                favoriteSpells={favoriteSpells}
+                onToggle={handleToggleSpells}
+              />
+            }
           />
-        )}
-      </AppLayout>
+          <Route path={"*"} element={<NotFoundPage />} />
+        </Route>
+      </Routes>
     </>
   );
 }

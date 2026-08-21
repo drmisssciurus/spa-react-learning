@@ -1,9 +1,3 @@
-export type AppPage =
-  | "characters"
-  | "spells"
-  | "favoriteWizards"
-  | "favoriteSpells";
-
 export type WizardInfo = {
   id: string;
   name: string;

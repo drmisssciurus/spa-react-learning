@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap");
 
-.wizard-card {
+.wizard-card,
+.spell-card {
   display: flex;
   flex-direction: column;
   border: 1px solid #e1b12c;
@@ -12,7 +13,8 @@
   position: relative;
 }
 
-.wizard-title {
+.wizard-title,
+.spells-title {
   font-family: "Cinzel", serif;
   color: #e1b12c;
   font-size: 22px;
@@ -35,11 +37,47 @@
   border-radius: 8px;
 }
 
-.saved {
+.saved,
+.saved-spell {
   width: 30px;
   height: 30px;
   padding: 0;
   position: absolute;
-  bottom: 15px;
   right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.saved {
+  bottom: 15px;
+}
+
+.saved-spell {
+  top: 15px;
+}
+
+.spells-container {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  flex-wrap: wrap;
+}
+
+.spell-name {
+  font-family: "Cinzel", serif;
+  color: #e1b12c;
+  text-align: center;
+  width: 90%;
+}
+
+.spell-description {
+  margin-bottom: 20px;
+  color: grey;
+}
+
+.sum-favorite {
+  display: flex;
+  justify-content: end;
+  margin: 20px 40px 0 0 ;
 }

@@ -1,5 +1,5 @@
 import type { WizardInfo } from "../../types/types";
-import "./WizardCard.css";
+import "./Cards.css";
 
 type WizardCardProps = {
   wizard: WizardInfo;
@@ -29,7 +29,7 @@ function WizardCard({ wizard, onToggle, isFavorite }: WizardCardProps) {
       ) : (
         <img className="wizard-image" src="unknown.png" alt="unknown" />
       )}
-      <button onClick={onToggle} type="button" className="saved">
+      <button onClick={onToggle} type="button" className="button saved">
         {isFavorite ? "❤️" : "❤"}
       </button>
     </div>

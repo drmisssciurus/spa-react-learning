@@ -1,5 +1,5 @@
 import type { SpellInfo } from "../../types/types";
-import "./SpellCard.css";
+import "./Cards.css";
 
 type SpellCardProps = {
   spell: SpellInfo;
@@ -12,7 +12,7 @@ function SpellCard({ spell, onToggle, isFavorite }: SpellCardProps) {
     <div className="spell-card">
       <h3 className="spell-name">{spell.name}</h3>
       <p className="spell-description">{spell.description}</p>
-      <button onClick={onToggle} type="button" className="saved-spell">
+      <button onClick={onToggle} type="button" className="button saved-spell">
         {isFavorite ? "❤️" : "❤"}
       </button>
     </div>

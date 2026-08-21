@@ -15,7 +15,7 @@
   text-align: center;
 }
 
-button {
+.button {
   border: 1px solid #e1b12c;
   border-radius: 10px;
   font-family: "Inter", sans-serif;
@@ -24,9 +24,15 @@ button {
   background-color: rgba(131, 130, 130, 0.541);
   padding: 10px;
   margin: 0 5px;
+  text-decoration: none;
+
 }
 
 button:hover {
   cursor: pointer;
   transition: 0.5s;
+}
+
+.sum-favorite {
+
 }

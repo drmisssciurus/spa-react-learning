@@ -1,33 +1,22 @@
-import type { AppPage, SpellInfo, WizardInfo } from "../../types/types";
+import { Link } from "react-router-dom";
+import type { SpellInfo, WizardInfo } from "../../types/types";
+import "./Cards.css";
 
 type SumFavoriteProps = {
   favoriteWizards: WizardInfo[];
-  onPageChange: (page: AppPage) => void;
-  onPageSpellChange: (page: AppPage) => void;
   favoriteSpells: SpellInfo[];
 };
 
-function SumFavorite({
-  favoriteWizards,
-  onPageChange,
-  onPageSpellChange,
-  favoriteSpells,
-}: SumFavoriteProps) {
+function SumFavorite({ favoriteWizards, favoriteSpells }: SumFavoriteProps) {
   return (
-    <>
-      <span className="sum-favorite">
-        <button onClick={() => onPageChange("favoriteWizards")}>
-          <span>🤍 Favorite wizards: </span>
-          <span>{favoriteWizards.length}</span>
-        </button>
-      </span>
-      <span className="sum-favorite">
-        <button onClick={() => onPageSpellChange("favoriteSpells")}>
-          <span>🤍 Favorite spells: </span>
-          <span>{favoriteSpells.length}</span>
-        </button>
-      </span>
-    </>
+    <div className="sum-favorite">
+      <Link to={"/favorite-wizards"} className="button">
+        🤍 Favorite wizards: {favoriteWizards.length}
+      </Link>
+      <Link to={"/favorite-spells"} className="button">
+        🤍 Favorite spells: {favoriteSpells.length}
+      </Link>
+    </div>
   );
 }
 

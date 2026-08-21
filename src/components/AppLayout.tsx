@@ -1,28 +1,19 @@
-import type { ReactNode } from "react";
-import type { AppPage, SpellInfo, WizardInfo } from "../types/types";
+import type { SpellInfo, WizardInfo } from "../types/types";
 import SumFavorite from "../pages/forms/SumFavorite";
 import "./AppLayout.css";
+import { NavLink, Outlet } from "react-router-dom";
 
 type AppLayoutProps = {
   favoriteWizards: WizardInfo[];
   favoriteSpells: SpellInfo[];
-  activepage: AppPage;
-  onPageChange: (page: AppPage) => void;
-  children: ReactNode;
 };
 
-const navItems: Array<{ page: AppPage; label: string }> = [
-  { page: "characters", label: "Characters" },
-  { page: "spells", label: "Spells" },
+const navItems = [
+  { label: "Wizards", to: "/wizards" },
+  { label: "Spells", to: "/spells" },
 ];
 
-function AppLayout({
-  activepage,
-  onPageChange,
-  favoriteWizards,
-  favoriteSpells,
-  children,
-}: AppLayoutProps) {
+function AppLayout({ favoriteWizards, favoriteSpells }: AppLayoutProps) {
   return (
     <div>
       <header className="main-header">
@@ -32,29 +23,32 @@ function AppLayout({
             Stores records on all wizards and witches
           </p>
         </div>
+
         <nav className="navigation">
           {navItems.map((item) => (
-            <button
-              key={item.page}
-              className={activepage === item.page ? "active" : ""}
-              onClick={() => onPageChange(item.page)}
-              type="button"
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "button active" : "button "
+              }
+              key={item.to}
+              to={item.to}
             >
+              {" "}
               {item.label}
-            </button>
+            </NavLink>
           ))}
         </nav>
-        <div className="sum-box">
-          <SumFavorite
-            favoriteWizards={favoriteWizards}
-            onPageChange={() => onPageChange("favoriteWizards")}
-            onPageSpellChange={() => onPageChange("favoriteSpells")}
-            favoriteSpells={favoriteSpells}
-          />
-        </div>
+
+        <SumFavorite
+          favoriteWizards={favoriteWizards}
+          favoriteSpells={favoriteSpells}
+        />
+        
       </header>
 
-      <main>{children}</main>
+      <main>
+        <Outlet />
+      </main>
     </div>
   );
 }
