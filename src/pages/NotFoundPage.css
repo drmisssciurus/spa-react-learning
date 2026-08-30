@@ -1,0 +1,15 @@
+body {
+  color: grey;
+  text-align: center;
+}
+
+.not-found-title {
+  color: #e1b12c;
+  font-size: 30px;
+  font-family: "Cinzel", serif;
+  margin-bottom: 30px;
+}
+
+.not-found-image {
+  height: 300px;
+}

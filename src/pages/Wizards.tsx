@@ -11,8 +11,17 @@ type WizardsProps = {
 
 function Wizards({ favoriteWizards, onToggle }: WizardsProps) {
   const [wizards, setWizards] = useState<WizardInfo[]>([]);
+  const [query, setQuery] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+
+  const handleQueryRequest = (newQuery: string) => {
+    setQuery(newQuery);
+  };
+
+  const filteredWizards = wizards.filter((w) =>
+    w.name.toLowerCase().includes(query.toLowerCase().trim()),
+  );
 
   const loadWizards = async () => {
     setIsLoading(true);
@@ -43,8 +52,17 @@ function Wizards({ favoriteWizards, onToggle }: WizardsProps) {
     <div className="main-container">
       <div className="main-wizards">
         <h1 className="wizards-title">Wizards & Witches</h1>
+        <input
+          type="text"
+          className="search"
+          placeholder="Search wizard..."
+          onChange={(event) => {
+            handleQueryRequest(event.target.value);
+          }}
+          value={query}
+        />
         <div className="wizard-container">
-          {wizards.map((wizard) => {
+          {filteredWizards.map((wizard) => {
             const isWizardSaved = favoriteWizards.some(
               (w) => w.id === wizard.id,
             );
